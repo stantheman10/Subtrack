@@ -19,6 +19,7 @@ const NAV = [
   { href: "/expenses", label: "Expenses", icon: CreditCard },
   { href: "/subscriptions", label: "Subscriptions", icon: RefreshCcw },
   { href: "/goals", label: "Goals", icon: Target },
+  { href: "/settings", label: "Settings", icon: CreditCard },
 ];
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
