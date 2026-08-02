@@ -282,7 +282,7 @@ export default function GoalsPage() {
         onClose={() => setGoalModalOpen(false)}
         title={editingGoal ? "Edit goal" : "New savings goal"}
       >
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[calc(100dvh-180px)] overflow-y-auto pb-24">
           <div>
             <label className="label">Goal name</label>
             <input
