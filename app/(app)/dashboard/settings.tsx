@@ -59,7 +59,7 @@ export default function BudgetSettings({ current }: { current: number }) {
         title="Monthly budget"
         size="sm"
       >
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[calc(100dvh-180px)] overflow-y-auto pb-24">
           <p className="text-sm" style={{ color: "var(--color-muted)" }}>
             Set a monthly spending cap to track against on your dashboard.
           </p>
