@@ -273,7 +273,7 @@ export default function SubscriptionsPage() {
         onClose={() => setModalOpen(false)}
         title={editing ? "Edit subscription" : "Add subscription"}
       >
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[calc(100dvh-180px)] overflow-y-auto pb-24">
           <div>
             <label className="label">Name</label>
             <input
