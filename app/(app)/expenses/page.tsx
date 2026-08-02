@@ -311,7 +311,7 @@ export default function ExpensesPage() {
         onClose={() => setModalOpen(false)}
         title={editing ? "Edit transaction" : "Add transaction"}
       >
-        <div className="space-y-4">
+        <div className="space-y-4 max-h-[calc(100dvh-180px)] overflow-y-auto pb-24">
           {/* Type toggle */}
           <div>
             <label className="label">Type</label>
