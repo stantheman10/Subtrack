@@ -1,13 +1,20 @@
-import { redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function RootPage() {
-  const supabase = await createClient()
-  const { data: { claims } } = await supabase.auth.getClaims()
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getClaims();
+
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const claims = data?.claims;
 
   if (claims) {
-    redirect('/dashboard')
+    redirect("/dashboard");
   } else {
-    redirect('/login')
+    redirect("/login");
   }
 }
