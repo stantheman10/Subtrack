@@ -43,7 +43,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
 In the Supabase dashboard → SQL Editor, paste and run the contents of:
 
 ```
-supabase/migrations/001_initial_schema.sql
+supabase/migrations/20260802153000_initial_schema.sql
 ```
 
 This creates all tables, RLS policies, indexes, and a trigger to auto-create
