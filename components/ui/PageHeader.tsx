@@ -5,11 +5,13 @@ import { useRouter } from "next/navigation";
 interface PageHeaderProps {
   title: string;
   selectedMonth?: string;
+  subtitle?: string;
   action?: React.ReactNode;
 }
 
 export default function PageHeader({
   title,
+  subtitle,
   selectedMonth,
   action,
 }: PageHeaderProps) {
