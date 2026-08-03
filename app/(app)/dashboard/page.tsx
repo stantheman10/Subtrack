@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { format, startOfMonth, endOfMonth, subDays } from "date-fns";
+import { format, startOfMonth, endOfMonth, subDays, parse } from "date-fns";
 import { formatCurrency } from "@/lib/utils";
 import PageHeader from "@/components/ui/PageHeader";
 import StatCard from "@/components/ui/StatCard";
@@ -10,11 +10,23 @@ import BudgetSettings from "@/app/(app)/dashboard/settings";
 
 export const dynamic = "force-dynamic";
 
-export default async function DashboardPage() {
+interface DashboardPageProps {
+  searchParams: Promise<{
+    month?: string;
+  }>;
+}
+
+export default async function DashboardPage({
+  searchParams,
+}: DashboardPageProps) {
+  const params = await searchParams;
+  const selectedMonth = params.month ?? format(new Date(), "yyyy-MM");
+
+  const monthDate = parse(selectedMonth, "yyyy-MM", new Date());
   const supabase = await createClient();
   const now = new Date();
-  const monthStart = format(startOfMonth(now), "yyyy-MM-dd");
-  const monthEnd = format(endOfMonth(now), "yyyy-MM-dd");
+  const monthStart = format(startOfMonth(monthDate), "yyyy-MM-dd");
+  const monthEnd = format(endOfMonth(monthDate), "yyyy-MM-dd");
   const thirtyDaysAgo = format(subDays(now, 29), "yyyy-MM-dd");
   const today = format(now, "yyyy-MM-dd");
 
@@ -100,7 +112,7 @@ export default async function DashboardPage() {
     <div>
       <PageHeader
         title="Dashboard"
-        subtitle={format(now, "MMMM yyyy")}
+        selectedMonth={selectedMonth}
         action={<BudgetSettings current={monthlyBudget} />}
       />
 
